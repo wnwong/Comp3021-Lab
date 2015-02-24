@@ -25,6 +25,14 @@ public class Post {
 	}
 	/**
 	 * 
+	 * @return the date of the post
+	 */
+	public Date getDate(){
+		
+		return date;
+	}
+	/**
+	 * 
 	 * @param content
 	 */
 	public void setContent(String content){
