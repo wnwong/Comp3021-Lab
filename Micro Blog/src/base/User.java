@@ -1,44 +1,41 @@
 package base;
 
-import java.util.Date;
-
-public class Post {
-
-	private Date date;
-	private String content;
+public class User {
+	private int userId;
+	private String userName;
+	private String userEmail;
 	/**
 	 * Constructor
-	 * @param date
-	 * @param content
+	 * @param userId
+	 * @param userName
+	 * @param userEmail
 	 */
-	public Post(Date date, String content){
-		this.date = date;
-		this.content = content;
+	public User(int userId, String userName, String userEmail){
+		this.userId = userId;
+		this.userName = userName;
+		this.userEmail = userEmail;
 	}
 	/**
 	 * 
-	 * @return the content of the blog
+	 * @return the user name
 	 */
-	public String getContent(){
-		
-		return content;
+	public String getName(){
+		return userName;
 	}
 	/**
 	 * 
-	 * @param content
+	 * @param name
 	 */
-	public void setContent(String content){
-		this.content = content;
+	public void setName(String name){
+		userName = name;
 	}
-	@Override
 	/**
 	 * Output this object in string format
 	 * @return String
 	 * 
 	 */
 	public String toString(){
-
-		return date + "\n" + content;
+		return "User [userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + "]";
 	}
 	@Override
 	/**
@@ -58,20 +55,18 @@ public class Post {
 			ans = false;
 		}
 		else{
-			// Transfer object o to POST
-			Post post = (Post) o;
-			if(date != post.date || !content.equals(this.content))
+			// Transfer object o to USER
+			User user = (User) o;
+			if(userId != user.userId || !userName.equals(user.userName) || userEmail.equals(user.userEmail))
 			ans = false;
 		}
 		return ans;
 	}
-	/**
-	 * 
-	 */
+	
 	public int hashCode(){
 		int hashCode = 0;
 		hashCode = 
-		date.hashCode() + content.hashCode();
+		userEmail.hashCode() + userName.hashCode() + userId;
 		
 		return hashCode;
 	}
@@ -81,7 +76,7 @@ public class Post {
 	 * @return
 	 */
 	public boolean contains(String keyword){
-		if(content.contains(keyword))
+		if(userName.contains(keyword))
 			return true;
 		else 
 			return false;
