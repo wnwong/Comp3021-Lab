@@ -1,4 +1,5 @@
 package base;
+
 import java.util.Date;
 
 public class FriendsPost extends Post{
