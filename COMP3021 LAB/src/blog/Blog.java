@@ -48,7 +48,7 @@ public class Blog {
 	public void list(){
 		System.out.println("Current posts:");
 		for(int i =0; i<allPosts.size();i++){
-			System.out.print("Post["+ (i+1) +"]");
+			System.out.print("Post["+ (i+1) +"]:");
 			System.out.println(allPosts.get(i));
 		}
 	}
@@ -57,7 +57,7 @@ public class Blog {
 	 * @param index
 	 */
 	public void delete(int index){
-		if(index > allPosts.size()){
+		if(index > allPosts.size() || index <= 0){
 			System.out.println("Illegal deletion");
 		}
 		else
