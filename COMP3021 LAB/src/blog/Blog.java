@@ -57,7 +57,7 @@ public class Blog {
 	 * @param index
 	 */
 	public void delete(int index){
-		if(index > allPosts.size()){
+		if(index > allPosts.size() || index <= 0){
 			System.out.println("Illegal deletion");
 		}
 		else
