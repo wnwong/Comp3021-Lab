@@ -1,6 +1,6 @@
 package base;
 
-public class User {
+public class User implements Comparable<User> {
 	private int userId;
 	private String userName;
 	private String userEmail;
@@ -39,6 +39,16 @@ public class User {
 	}
 
 	@Override
+	public int compareTo(User u) {
+		if(userId > u.userId)
+			return 1;
+		else if (userId < u.userId)
+			return -1;
+		else
+		return 0;
+	}
+	
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -49,6 +59,7 @@ public class User {
 				+ ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

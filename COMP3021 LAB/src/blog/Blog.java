@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import base.*;
 
+import java.util.Calendar;
+
 public class Blog {
 
 	private User user;
@@ -108,6 +110,27 @@ public class Blog {
 	public String toString() {
 		return "Blog [user=" + user + ", allPosts=" + allPosts + "]";
 	}
+	/**
+	 * Search posts created in month and mentioned someone
+	 * 
+	 * @param month
+	 * @param someone
+	 */
+	public void search(int month, String someone){
+		Calendar cal = Calendar.getInstance();
+		// search from all posts
+		for (Post p: allPosts){
+			// get the current post's month ( note that Calendar.Month starts 
+			// with 0, not 1)
+			cal.setTime(p.getDate());
+			int postMonth = cal.get((Calendar.MONTH));
+			if((postMonth+1 == month) && p.contains(someone))
+				System.out.println(p);
+		}
+	}
 	
-	
+	public void setPosts(ArrayList<Post> allPosts){
+		for(int i=0;i<allPosts.size();i++)
+			this.allPosts.add(allPosts.get(i));
+	}
 }
