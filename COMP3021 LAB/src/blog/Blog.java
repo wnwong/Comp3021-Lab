@@ -1,12 +1,13 @@
 package blog;
 
+import java.io.*;
 import java.util.ArrayList;
 
 import base.*;
 
 import java.util.Calendar;
 
-public class Blog {
+public class Blog implements Serializable{
 
 	private User user;
 	private ArrayList<Post> allPosts;
@@ -132,5 +133,38 @@ public class Blog {
 	public void setPosts(ArrayList<Post> allPosts){
 		for(int i=0;i<allPosts.size();i++)
 			this.allPosts.add(allPosts.get(i));
+	}
+	/**
+	 * 
+	 * @param filepath
+	 */
+	public void save(String filepath){
+		try{
+			FileOutputStream fs = new FileOutputStream(filepath);
+			ObjectOutputStream os = new ObjectOutputStream(fs);
+			os.writeObject(this);
+			os.close();
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
+	}
+	
+	public void load(String filepath){
+		try{
+			FileInputStream fs = new FileInputStream(filepath);
+			ObjectInputStream is = new ObjectInputStream(fs);
+			Blog one = (Blog) is.readObject();
+			for(int i=0; i<one.allPosts.size();i++)
+			{this.allPosts.add(one.allPosts.get(i));}
+			is.close();
+		}
+		catch(FileNotFoundException e){
+			System.out.println("Wait! There is something wrong. I cannot find the file..");
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 }
