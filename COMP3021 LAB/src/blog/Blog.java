@@ -156,6 +156,7 @@ public class Blog implements Serializable{
 			FileInputStream fs = new FileInputStream(filepath);
 			ObjectInputStream is = new ObjectInputStream(fs);
 			Blog one = (Blog) is.readObject();
+			this.user=one.user;
 			for(int i=0; i<one.allPosts.size();i++)
 			{this.allPosts.add(one.allPosts.get(i));}
 			is.close();
